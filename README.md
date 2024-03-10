@@ -4,7 +4,7 @@ PPO implementation for InvertedPendulumEnv
 # The best state
 Наиболее похожее на ТЗ состояние:
 
-videos/best.mp4
+/home/sadevans/space/personal/ppo_test/videos/best.mp4
 
 Такого состояния удалось достичь при функции наград вида:
 ```python
