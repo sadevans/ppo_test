@@ -61,18 +61,18 @@ theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
 theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
 
 if abs(theta) > 0.9:
-reward -= 1
-coef_velocity = 1
+  reward -= 1
+  coef_velocity = 1
 else:
-print(theta, ob[2], ob[3])
-reward += np.exp(1 - abs(theta))
-coef_velocity = -(abs(theta) - 1)
+  print(theta, ob[2], ob[3])
+  reward += np.exp(1 - abs(theta))
+  coef_velocity = -(abs(theta) - 1)
 
 if abs(theta) < 0.2:
-reward += 100/(0.3*ob[0]**2)
+  reward += 100/(0.3*ob[0]**2)
 
 if abs(ob[0]) > 0.8:
-reward -= 10
+  reward -= 10
 
 swing_up =  1 - abs(theta) / np.pi
 reward += swing_up + coef_velocity*abs(ob[3])**2 - 0.4*abs(a[0])/3 + ob[0] * 0.2*abs(ob[2]) # более плавно но перелетает все равно
