@@ -4,7 +4,7 @@ PPO implementation for InvertedPendulumEnv
 # The best state
 Наиболее похожее на ТЗ состояние:
 
-<video controls src="videos/best.mp4" title="Title"></video>
+videos/best.mp4
 
 Такого состояния удалось достичь при функции наград вида:
 ```python
