@@ -19,6 +19,8 @@ PPO implementation for InvertedPendulumEnv
 
 https://github.com/sadevans/ppo_test/assets/82286355/8b88d8b5-9485-4e6a-b3b1-22f4b7765c3c
 
+Маятник смог подняться в вертикальное состяние и немного его удержать, проехавшись. 
+
 Такого состояния удалось достичь при функции наград вида:
 ```python
     theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
