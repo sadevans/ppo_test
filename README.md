@@ -19,7 +19,7 @@ PPO implementation for InvertedPendulumEnv
 
 Были протестированы различные функции. Их вид и результат тестирование представлены ниже.
 
-Для того, чтобы протестировать среду с ними, необходимо вставить их в функцию https://github.com/sadevans/ppo_test/blob/0102c57ee0888b2d3ca2d4d5295b646d0407318b/environment/environment.py#L9
+Для того, чтобы протестировать среду с ними, необходимо вставить их в функцию: https://github.com/sadevans/ppo_test/blob/0102c57ee0888b2d3ca2d4d5295b646d0407318b/environment/environment.py#L9
 ### Вариант №1
 
 ```python
