@@ -22,26 +22,28 @@ PPO implementation for InvertedPendulumEnv
 ### Вариант №1
 
 ```python
-        theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
-        theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
-        if abs(ob[0]) > 0.8:
-          out_of_bound = 1
-        else:
-          out_of_bound = 0
-        x = abs(ob[0]) # ob[0] in [-1.1, 1.1]
-        x_change_reward = -x ** 2
-        reward += 0.3 * x_change_reward
-        if abs(theta) < 0.1:
-          reward += 10
-        else:
-          reward = 2.5 * np.cos(theta) - 0.01*(ob[3])**2 - 0.1*a[0]**2 - 10*out_of_bound
+theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
+theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
+if abs(ob[0]) > 0.8:
+  out_of_bound = 1
+else:
+  out_of_bound = 0
+x = abs(ob[0]) # ob[0] in [-1.1, 1.1]
+x_change_reward = -x ** 2
+reward += 0.3 * x_change_reward
+if abs(theta) < 0.1:
+  reward += 10
+else:
+  reward = 2.5 * np.cos(theta) - 0.01*(ob[3])**2 - 0.1*a[0]**2 - 10*out_of_bound
 ```
 
 https://github.com/sadevans/ppo_test/assets/82286355/8aed1d2d-e8c6-42a0-8979-ceee6f1fae61
 
 ### Вариант №2
 ```python
-python        
+reward = 0
+theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
+theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]      
 if abs(ob[0]) > 0.9:
   out_of_bound = 1
 else:
@@ -54,26 +56,26 @@ https://github.com/sadevans/ppo_test/assets/82286355/f632cb42-92ad-47c3-9223-02a
 
 ### Вариант №3
 ```python
-    reward = 0
-    theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
-    theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
-    
-    if abs(theta) > 0.9:
-      reward -= 1
-      coef_velocity = 1
-    else:
-      print(theta, ob[2], ob[3])
-      reward += np.exp(1 - abs(theta))
-      coef_velocity = -(abs(theta) - 1)
+reward = 0
+theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
+theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
 
-    if abs(theta) < 0.2:
-      reward += 100/(0.3*ob[0]**2)
+if abs(theta) > 0.9:
+reward -= 1
+coef_velocity = 1
+else:
+print(theta, ob[2], ob[3])
+reward += np.exp(1 - abs(theta))
+coef_velocity = -(abs(theta) - 1)
 
-    if abs(ob[0]) > 0.8:
-      reward -= 10
+if abs(theta) < 0.2:
+reward += 100/(0.3*ob[0]**2)
 
-    swing_up =  1 - abs(theta) / np.pi
-    reward += swing_up + coef_velocity*abs(ob[3])**2 - 0.4*abs(a[0])/3 + ob[0] * 0.2*abs(ob[2]) # более плавно но перелетает все равно
+if abs(ob[0]) > 0.8:
+reward -= 10
+
+swing_up =  1 - abs(theta) / np.pi
+reward += swing_up + coef_velocity*abs(ob[3])**2 - 0.4*abs(a[0])/3 + ob[0] * 0.2*abs(ob[2]) # более плавно но перелетает все равно
 ```
 
 
