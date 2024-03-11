@@ -82,21 +82,35 @@ reward += swing_up + coef_velocity*abs(ob[3])**2 - 0.4*abs(a[0])/3 + ob[0] * 0.2
 
 https://github.com/sadevans/ppo_test/assets/82286355/2f55b9ad-cbe3-41af-acd0-755e3e6a9608
 
-
-# Наилучший результат
-Наиболее похожее на ТЗ состояние:
-
-https://github.com/sadevans/ppo_test/assets/82286355/8b88d8b5-9485-4e6a-b3b1-22f4b7765c3c
-
-Маятник смог подняться в вертикальное состяние и немного его удержать, проехавшись. 
-
-Такого состояния удалось достичь при функции наград вида:
+### Вариант №4
 ```python
     theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
     theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
     reward = -(theta**2 + 0.1*ob[3]**2 + 2*ob[0]**2)
     if abs(theta) < 0.1:
         reward += 0.1 * np.cos(theta) - 0.1*ob[3]**2
+```
+https://github.com/sadevans/ppo_test/assets/82286355/8b88d8b5-9485-4e6a-b3b1-22f4b7765c3c
+
+
+# Наилучший результат
+Наиболее похожее на ТЗ состояние:
+
+
+
+https://github.com/sadevans/ppo_test/assets/82286355/43104f8d-bb45-46c5-96f5-a06a9b1c3caa
+
+
+
+Маятник смог подняться в вертикальное состяние и немного его удержать. 
+
+Такого состояния удалось достичь при функции наград вида:
+```python
+theta = np.mod(ob[1], 2*np.pi) # [0; 2*pi]
+theta = (theta - 2*np.pi) if theta > np.pi else theta # [-pi; pi]
+reward = -(theta**2 + 0.1*ob[3]**2 + 2*ob[0]**2)
+if abs(theta) < 0.1:
+  reward += 0.1 * np.cos(theta) - 0.1*ob[3]**2
 ```
 
 # Evaluation
